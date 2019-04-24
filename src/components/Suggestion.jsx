@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import Place from "./place.jsx";
-class Button extends Component {
+import { Button } from "reactstrap";
+
+class Suggestion extends Component {
   state = { showComponent: false };
   constructor(props) {
     super(props);
@@ -21,17 +23,18 @@ class Button extends Component {
   render() {
     return (
       <div className="main-button">
-        <button
+        <Button
+          color="secondary"
           disabled={this.state.isButtonDisabled}
           onClick={() => this.showplace()}
           className="btn btn-secondary btn-sm"
         >
           suggestion
-        </button>
+        </Button>
         {this.state.showComponent ? <Place /> : null}
       </div>
     );
   }
 }
 
-export default Button;
+export default Suggestion;

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Displaymap from "./displaymap";
 
 class Place extends Component {
   state = { loading: true, place: null };
@@ -36,12 +37,13 @@ class Place extends Component {
                 <p>Rating</p>
                 {this.state.place.rating}
               </div>
+
+              <img alt="description" src={this.state.place.image[0]} />
               <div>
                 <p>Map</p>
-                {this.state.place.lat}
-                {this.state.place.lon}
+
+                <Displaymap />
               </div>
-              <img alt="description" src={this.state.place.image[0]} />
             </div>
           )}
         </div>
