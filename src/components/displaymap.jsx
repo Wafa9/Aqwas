@@ -1,17 +1,38 @@
-import React, { PureComponent } from "react";
-import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
+import React, { Component } from "react";
+import { Map, GoogleApiWrapper, InfoWindow, Marker } from "google-maps-react";
 
-class Displaymap extends PureComponent {
-  state = {};
+const mapStyles = {
+  width: "50%",
+  height: "30%"
+};
+export class Displaymap extends Component {
+  state = {
+    showingInfoWindow: false,
+    activeMarker: {},
+    selectedPlace: {}
+  };
   render() {
     return (
-      <div className="map-contier">
-        <Map google={this.props.google}>
-          <Marker onClick={this.onMarkerClick} name={"Current location"} />
-
-          <InfoWindow onClose={this.onInfoWindowClose} />
-        </Map>
-      </div>
+      <Map
+        google={this.props.google}
+        zoom={14}
+        style={mapStyles}
+        initialCenter={{
+          lat: this.props.lat,
+          lng: this.props.lon
+        }}
+      >
+        <Marker name={"Kenyatta International Convention Centre"} />
+        <InfoWindow
+          marker={this.state.activeMarker}
+          visible={this.state.showingInfoWindow}
+          onClose={this.onClose}
+        >
+          <div>
+            <h4>{this.state.selectedPlace.name}</h4>
+          </div>
+        </InfoWindow>
+      </Map>
     );
   }
 }
@@ -19,6 +40,3 @@ class Displaymap extends PureComponent {
 export default GoogleApiWrapper({
   apiKey: "AIzaSyARzv8iBxOW3nCBKSdLbvxIIVmqWNyfGfU"
 })(Displaymap);
-//<div>
-//<h1>{this.state.selectedPlace.name}</h1>
-//            </div >

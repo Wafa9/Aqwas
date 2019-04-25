@@ -14,6 +14,7 @@ class Place extends Component {
   }
 
   render() {
+    let { Lat, Lon } = this.props;
     return (
       <div>
         <div>
@@ -42,7 +43,10 @@ class Place extends Component {
               <div>
                 <p>Map</p>
 
-                <Displaymap />
+                <Displaymap
+                  lon={this.state.place.lon}
+                  lat={this.state.place.lat}
+                />
               </div>
             </div>
           )}
