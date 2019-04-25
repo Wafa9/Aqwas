@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Place from "./place.jsx";
-import { Button } from "reactstrap";
+import { Button, Col } from "reactstrap";
 
 class Suggestion extends Component {
   state = { showComponent: false };
@@ -9,7 +9,6 @@ class Suggestion extends Component {
     this.state = {
       showComponent: false,
       isButtonDisabled: false
-      //isOpened: false
     };
     this.showplace = this.showplace.bind(this);
   }
@@ -17,20 +16,21 @@ class Suggestion extends Component {
     this.setState({
       showComponent: true,
       isButtonDisabled: false
-      //isOpened: !this.state.isOpened
     });
   }
   render() {
     return (
       <div className="main-button">
-        <Button
-          color="secondary"
-          disabled={this.state.isButtonDisabled}
-          onClick={() => this.showplace()}
-          className="btn btn-secondary btn-sm"
-        >
-          suggestion
-        </Button>
+        <Col sm="12">
+          <Button
+            color="warning"
+            className="bttn"
+            disabled={this.state.isButtonDisabled}
+            onClick={() => this.showplace()}
+          >
+            suggestion
+          </Button>
+        </Col>
         {this.state.showComponent ? <Place /> : null}
       </div>
     );

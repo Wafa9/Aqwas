@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import { Map, GoogleApiWrapper, InfoWindow, Marker } from "google-maps-react";
-
+import { Container, Row, Col } from "reactstrap";
 const mapStyles = {
   width: "50%",
-  height: "30%"
+  height: "30%",
+  left: "20%",
+  top: "2%"
 };
 export class Displaymap extends Component {
   state = {

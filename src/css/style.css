@@ -1,15 +1,24 @@
 .NavBar {
-  background: #5aac96;
-  color: wheat;
+  background: #f3da3a;
+  color: #554d42;
   font-size: 70px;
   padding: 100px;
   text-align: center;
 }
-.backgroungpic {
-  backgroundimage: url(${Background});
+
+.bttn:hover {
+  border-color: #fff;
 }
-.map-contier {
-  border: 2px black solid;
-  height: 20%;
-  width: 30%;
+.main-button {
+  text-align: center;
+}
+.placeinfo {
+  font-size: 23px;
+  color: #554d42;
+}
+.ratting {
+  display: inline;
+}
+.placepic {
+  display: inline;
 }

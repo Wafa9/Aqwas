@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Displaymap from "./displaymap";
+import { Container, Col } from "reactstrap";
 
 class Place extends Component {
   state = { loading: true, place: null };
@@ -15,6 +16,7 @@ class Place extends Component {
 
   render() {
     let { Lat, Lon } = this.props;
+
     return (
       <div>
         <div>
@@ -22,32 +24,28 @@ class Place extends Component {
             <div>loading......</div>
           ) : (
             <div>
-              <div>
-                <p>Name</p>
-                {this.state.place.name}
-              </div>
-              <div>
-                <p>Id</p>
-                {this.state.place.id}
-              </div>
-              <div>
-                <p>open</p>
-                {this.state.place.open}
-              </div>
-              <div>
-                <p>Rating</p>
-                {this.state.place.rating}
-              </div>
+              <Container>
+                <div className="placeinfo">
+                  <Col sm="12">{this.state.place.name}</Col>
+                  <Col sm="12">
+                    {this.state.place.open == 1 ? <p>Open</p> : <p>Close</p>}
+                  </Col>
+                  <p className="ratting">Rating</p> {this.state.place.rating}
+                </div>
+              </Container>
 
-              <img alt="description" src={this.state.place.image[0]} />
-              <div>
-                <p>Map</p>
-
-                <Displaymap
-                  lon={this.state.place.lon}
-                  lat={this.state.place.lat}
+              <Col sm="12">
+                <img
+                  alt="description"
+                  src={this.state.place.image[0]}
+                  className="placepic"
                 />
-              </div>
+              </Col>
+
+              <Displaymap
+                lon={this.state.place.lon}
+                lat={this.state.place.lat}
+              />
             </div>
           )}
         </div>
